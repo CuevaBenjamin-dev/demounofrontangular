@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 export interface LoginRequest {
   username: string;
@@ -16,7 +17,7 @@ export interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'https://demouno-production.up.railway.app/api/auth/login';
+  // private readonly API_URL = 'https://demouno-production.up.railway.app/api/auth/login';
 
   constructor(private http: HttpClient) {}
 
@@ -28,6 +29,6 @@ export class AuthService {
     if (!body.username || !body.password) {
       return throwError(() => new Error('Username and password are required'));
     }
-    return this.http.post<LoginResponse>(this.API_URL, body);
+    return this.http.post<LoginResponse>(`${environment.apiUrl}/api/auth/login`, body);
   }
 }
