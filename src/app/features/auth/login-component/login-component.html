@@ -1,0 +1,25 @@
+<h2>Login</h2>
+
+<form (ngSubmit)="login()">
+
+  <input
+    type="text"
+    placeholder="Usuario"
+    [(ngModel)]="username"
+    name="username"
+  />
+
+  <br /><br />
+
+  <input
+    type="password"
+    placeholder="Contraseña"
+    [(ngModel)]="password"
+    name="password"
+  />
+
+  <br /><br />
+
+  <button type="submit">Ingresar</button>
+
+</form>
